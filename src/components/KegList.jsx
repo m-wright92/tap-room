@@ -15,17 +15,23 @@ const mainKegList = [
     alcoholContent: "5%"
   },
   {
-    name="beer"
-    brand="Four Loko"
-    price="$5"
-    alcoholContent="5%"
+    name: "malt liquor",
+    brand: "Four Loko",
+    price: "$5",
+    alcoholContent: "5%"
   }
 ]
 
 function KegList() {
   return (
     <React.Fragment>
-      <Keg />
+      {mainKegList.map((keg, index) => 
+      <Keg name={keg.name}
+       brand={keg.brand}
+       price={keg.price}
+       alcoholContent={keg.alcoholContent}
+       key={index}/>
+      )}
     </React.Fragment>
     
     )
