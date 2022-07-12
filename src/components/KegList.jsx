@@ -2,39 +2,20 @@ import React from 'react';
 import Keg from './Keg';
 import PropTypes from 'prop-types';
 
-const mainKegList = [
-  {
-    name: "beer",
-    brand: "PBR",
-    price: "$3",
-    alcoholContent: "5%"
-  },
-  {
-    name: "beer",
-    brand: "Rainier",
-    price: "$3",
-    alcoholContent: "5%"
-  },
-  {
-    name: "malt liquor",
-    brand: "Four Loko",
-    price: "$5",
-    alcoholContent: "5%"
-  }
-]
-
 function KegList(props) {
   return (
     <React.Fragment>
-      {mainKegList.map((keg, index) => 
+      {props.kegList.map((keg) => 
       <Keg 
-        whenListItemClicked={props.onKegSelection}
+        whenKegClicked={props.onKegSelection}
         name={keg.name}
         brand={keg.brand}
         price={keg.price}
         alcoholContent={keg.alcoholContent}
-        key={index}
+        key={keg.id}
         id={keg.id}
+        ozCount={keg.ozCount}
+        decrement={props.decrement}
       />
       )}
     </React.Fragment>
@@ -43,7 +24,8 @@ function KegList(props) {
 
 KegList.propTypes = {
   kegList: PropTypes.array,
-  onKegSelection: PropTypes.func
+  onKegSelection: PropTypes.func,
+  decrement: PropTypes.func
 }
 
 export default KegList;
