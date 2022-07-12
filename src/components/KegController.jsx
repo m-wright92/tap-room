@@ -14,9 +14,23 @@ export default class KegController extends Component {
     };
   }
 
+  decrement = (id) => {
+    console.log(id);
+    const selectedKeg = this.state.mainKegList.filter(
+      (keg) => keg.id === id
+      )[0];
+      if (selectedKeg.ozCount > 0) {
+        const newCount = (selectedKeg.ozCount = selectedKeg.ozCount -= 16);
+        selectedKeg.setState({ count: newCount });
+      }
+  };
+
   handleClick = () => {
-    if (this.state.selectedKeg === null) {
-      this.setState({formVisibleOnPage: true, selectedKeg: null});
+    if (this.state.selectedKeg != null) {
+      this.setState({
+        selectedKeg: null,
+        formVisibleOnPage: false
+      });
     }else {
       this.setState((prevState) => ({
         formVisibleOnPage: !prevState.formVisibleOnPage
@@ -39,14 +53,22 @@ export default class KegController extends Component {
   render() {
     let currentlyVisibleContent = null;
     let buttonText = null;
-    if (this.state.selectedKeg !== null) {
-      currentlyVisibleContent = <KegDetail keg={this.state.selectedKeg} />;
+    if (this.state.selectedKeg != null) {
+      currentlyVisibleContent = (
+        <KegDetail keg={this.state.selectedKeg} />
+      );
       buttonText = "Back to Keg List";
-    } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleContent = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />;
-      buttonText = "Return to Keg List";
-    } else {
-      currentlyVisibleContent = <KegList kegList={this.state.mainKegList} onKegSelection={this.handleChangingSelectedKeg} />;
+    }else if (this.state.formVisibleOnPage) {
+      currentlyVisibleContent = (
+        <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
+        );
+      buttonText = "Back to Keg List";
+    }else {
+      currentlyVisibleContent = (
+      <KegList 
+        kegList={this.state.mainKegList} onKegSelection={this.handleChangingSelectedKeg}
+        decrement={this.decrement} />
+      );
       buttonText = "Add a New Keg";
     }
 

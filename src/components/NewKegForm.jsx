@@ -15,6 +15,7 @@ function NewKegForm(props) {
       brand: _brand.value,
       price: _price.value,
       alcoholContent: _alcoholContent.value,
+      ozCount: 124,
       id: v4()
     });
     _name.value = '';

@@ -16,10 +16,12 @@ class Keg extends React.Component {
           <h3>{this.props.brand} - {this.props.name}</h3>
           <p>{this.props.price} - {this.props.alcoholContent}ABV</p>
         </div>
-        <button onClick={this.decrement} disabled={this.state.count === 0}>
+        <button 
+          onClick={() => this.props.decrement(this.props.id)}
+        >
           Pour a glass
         </button>
-        <p>Oz left: {this.state.count}</p>
+        <p>Oz left: {this.props.ozCount}</p>
       </React.Fragment>
     );
   }
@@ -32,7 +34,8 @@ Keg.propTypes = {
   alcoholContent: PropTypes.string,
   ozCount: PropTypes.number,
   id: PropTypes.string,
-  whenKegClicked: PropTypes.func
+  whenKegClicked: PropTypes.func,
+  decrement: PropTypes.func
 };
 
 export default Keg;
