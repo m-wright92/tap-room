@@ -15,7 +15,7 @@
 
 ## Component Diagram
 
-<img width="300" alt="image" src="https://user-images.githubusercontent.com/101528112/176931601-2fb6b31f-bf06-4099-89d3-01b9e7b91e74.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/101528112/178194661-66d1e1cf-ee99-47e8-8f6d-efab0bc58c71.png">
 
 
 ## Setup/Installation Requirements
