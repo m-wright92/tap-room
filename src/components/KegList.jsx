@@ -33,8 +33,7 @@ function KegList() {
        key={index}/>
       )}
     </React.Fragment>
-    
     )
 }
 
-export default KegList
+export default KegList;
