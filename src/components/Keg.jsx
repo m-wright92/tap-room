@@ -8,7 +8,7 @@ class Keg extends React.Component {
       count: this.props.ozCount
     };
   };
-
+  
   render() {
     return (
       <React.Fragment>

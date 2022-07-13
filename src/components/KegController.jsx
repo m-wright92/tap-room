@@ -15,15 +15,22 @@ export default class KegController extends Component {
   }
 
   decrement = (id) => {
-    console.log(id);
-    const selectedKeg = this.state.mainKegList.filter(
-      (keg) => keg.id === id
-      )[0];
-      if (selectedKeg.ozCount > 0) {
-        const newCount = (selectedKeg.ozCount = selectedKeg.ozCount -= 16);
-        selectedKeg.setState({ count: newCount });
+    const tempList = this.state.mainKegList.map((keg) => {
+      if (keg.id === id) {
+        if (keg.ozCount > 0) {
+          return {
+            ...keg,
+            ozCount: keg.ozCount - 16
+          };
+        } else {
+          return keg;
+        }
       }
+      return keg;
+    });
+    this.setState({ mainKegList: tempList });
   };
+  
 
   handleClick = () => {
     if (this.state.selectedKeg != null) {
